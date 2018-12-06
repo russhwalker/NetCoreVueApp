@@ -12,7 +12,7 @@ export default class MakeEditComponent extends Vue {
     editing: boolean = false;
     make: Make | undefined;
 
-    toggleEditing() {
+    toggleEditing(event: any) {
         this.editing = !this.editing;
     }
 
