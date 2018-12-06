@@ -1,0 +1,21 @@
+<template>
+    <div>
+        <h1>Edit Make</h1>
+        <div class="row" v-if="!loaded">
+            <strong>Loading...</strong>
+        </div>
+        <div class="row" v-if="loaded">
+            <div class="col-md-2">
+                <label>Make</label>
+                <input class="form-control" name="makeName" type="text" v-model="make.makeName" :disabled="!editing" />
+            </div>
+        </div>
+        <div class="row" v-if="loaded">
+            <div class="col-md-12">
+                <button class="btn btn-sm btn-info" type="button" onClick={this.props.onEditClick}>Edit</button>
+            </div>
+        </div>
+    </div>
+</template>
+
+<script src="./makeedit.ts"></script>

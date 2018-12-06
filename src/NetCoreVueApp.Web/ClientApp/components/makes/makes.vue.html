@@ -1,0 +1,25 @@
+<template>
+    <div>
+        <h1>Makes</h1>
+        <table class='table table-condensed'>
+            <thead>
+                <tr>
+                    <th></th>
+                    <th>Make</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr v-for="(row, index) in makes" :key="row.makeId">
+                    <td>
+                        <router-link class="btn btn-xs btn-info" :to="'/makeedit/' + row.makeId">
+                            View
+                        </router-link>
+                    </td>
+                    <td>{{row.makeName}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</template>
+
+<script src="./makes.ts"></script>
