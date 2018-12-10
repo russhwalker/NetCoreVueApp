@@ -6,6 +6,7 @@
     note: string;
     visible: boolean;
 
+    priceFormatted: number;
     makeId: number;
     makeName: string;
     modelName: string;
