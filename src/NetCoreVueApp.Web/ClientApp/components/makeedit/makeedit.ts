@@ -6,6 +6,7 @@ import { Make } from '../../interfaces/make';
 export default class MakeEditComponent extends Vue {
     loaded: boolean = false;
     editing: boolean = false;
+    isNew: boolean = false;
     make: Make | undefined;
 
     toggleEditing(event: any) {
@@ -35,11 +36,14 @@ export default class MakeEditComponent extends Vue {
     }
 
     mounted() {
-        fetch('api/Makes/MakeEdit/' + this.$route.params.id)
+        var makeId = parseInt(this.$route.params.id, 10);
+        this.isNew = makeId === 0;
+        fetch('api/Makes/MakeEdit/' + makeId)
             .then(response => response.json() as Promise<Make>)
             .then(data => {
                 this.make = data;
                 this.loaded = true;
+                this.editing = this.isNew;
             })
             .catch(() => {
                 alert('ERROR!');

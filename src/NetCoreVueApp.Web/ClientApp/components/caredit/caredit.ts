@@ -9,6 +9,7 @@ import { Car } from '../../interfaces/car';
 export default class CarEditComponent extends Vue {
     loaded: boolean = false;
     editing: boolean = false;
+    isNew: boolean = false;
     car: Car | undefined;
     filteredModels: Model[] = [];
     models: Model[] | undefined;
@@ -49,7 +50,9 @@ export default class CarEditComponent extends Vue {
     }
 
     mounted() {
-        fetch('api/Cars/CarEdit/' + this.$route.params.id)
+        var carId = parseInt(this.$route.params.id, 10);
+        this.isNew = carId === 0;
+        fetch('api/Cars/CarEdit/' + carId)
             .then(response => response.json() as Promise<CarViewModel>)
             .then(data => {
                 this.car = data.car;
@@ -59,6 +62,7 @@ export default class CarEditComponent extends Vue {
                 this.car.makeId = (model && model.length > 0) ? model[0].makeId : 0;
                 this.setFilteredModels(this.car.makeId);
                 this.loaded = true;
+                this.editing = this.isNew;
             })
             .catch(() => {
                 alert('ERROR!');

@@ -8,6 +8,7 @@ import { Make } from '../../interfaces/make';
 export default class ModelEditComponent extends Vue {
     loaded: boolean = false;
     editing: boolean = false;
+    isNew: boolean = false;
     model: Model | undefined;
     makes: Make[] | undefined;
 
@@ -38,12 +39,15 @@ export default class ModelEditComponent extends Vue {
     }
 
     mounted() {
-        fetch('api/Models/ModelEdit/' + this.$route.params.id)
+        var modelId = parseInt(this.$route.params.id, 10);
+        this.isNew = modelId === 0;
+        fetch('api/Models/ModelEdit/' + modelId)
             .then(response => response.json() as Promise<ModelViewModel>)
             .then(data => {
                 this.makes = data.makes;
                 this.model = data.model;
                 this.loaded = true;
+                this.editing = this.isNew;
             })
             .catch(() => {
                 alert('ERROR!');
