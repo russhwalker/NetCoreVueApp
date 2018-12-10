@@ -16,6 +16,10 @@ export default class MakeEditComponent extends Vue {
         this.editing = !this.editing;
     }
 
+    handleSave(event: any) {
+
+    }
+
     mounted() {
         fetch('api/Makes/MakeEdit/' + this.$route.params.id)
             .then(response => response.json() as Promise<Make>)

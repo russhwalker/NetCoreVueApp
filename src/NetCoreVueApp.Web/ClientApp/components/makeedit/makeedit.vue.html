@@ -19,8 +19,8 @@
 
         <div class="row" v-if="loaded && editing">
             <div class="col-md-12">
-                <button class="btn btn-sm btn-default" type="button">Cancel</button>&nbsp;
-                <button class="btn btn-sm btn-primary" type="button">Save</button>
+                <button class="btn btn-sm btn-default" type="button" v-on:click.stop="toggleEditing">Cancel</button>&nbsp;
+                <button class="btn btn-sm btn-primary" type="button" v-on:click.stop="handleSave">Save</button>
             </div>
         </div>
 
