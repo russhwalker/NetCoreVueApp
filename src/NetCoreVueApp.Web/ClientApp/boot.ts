@@ -6,8 +6,8 @@ Vue.use(VueRouter);
 
 const routes = [
     { path: '/', component: require('./components/home/home.vue.html') },
-    //{ path: '/cars', component: require('./components/cars/cars.vue.html') },
-    //{ path: '/caredit/:id', component: require('./components/caredit/caredit.vue.html') },
+    { path: '/cars', component: require('./components/cars/cars.vue.html') },
+    { path: '/caredit/:id', component: require('./components/caredit/caredit.vue.html') },
     { path: '/makes', component: require('./components/makes/makes.vue.html') },
     { path: '/makeedit/:id', component: require('./components/makeedit/makeedit.vue.html') },
     { path: '/models', component: require('./components/models/models.vue.html') },

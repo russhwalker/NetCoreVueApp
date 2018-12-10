@@ -46,7 +46,11 @@ namespace NetCoreVueApp.Web.Controllers
         [HttpPost("[action]")]
         public Car Save([FromBody]Car car)
         {
-            return carRepository.Save(car);
+            var cars1 = carRepository.GetCarRows(false);
+            var c = carRepository.Save(car);
+
+            var cars2 = carRepository.GetCarRows(false);
+            return c;
         }
     }
 }
