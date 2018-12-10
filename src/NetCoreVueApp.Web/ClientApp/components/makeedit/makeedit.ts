@@ -1,10 +1,6 @@
 import Vue from 'vue';
 import { Component } from 'vue-property-decorator';
-
-interface Make {
-    makeId: number;
-    makeName: string;
-}
+import { Make } from '../../interfaces/make';
 
 @Component
 export default class MakeEditComponent extends Vue {
