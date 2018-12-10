@@ -1,0 +1,69 @@
+<template>
+    <div>
+        <h1>Edit Car</h1>
+        <div class="row" v-if="!loaded">
+            <strong>Loading...</strong>
+        </div>
+
+        <div class="row" v-if="loaded">
+            <div class="col-md-2">
+                <label>Year</label>
+                <input class="form-control" type="text" :disabled="!editing" />
+            </div>
+        </div>
+
+        <div class="row" v-if="loaded">
+            <div class="col-md-2">
+                <label>Make</label>
+                <select class="form-control" v-model="car.makeId" v-on:change="handleMakeChange" :disabled="!editing">
+                    <option value="0">--</option>
+                    <option v-for="(item, index) in makes" :key="item.makeId" :value="item.makeId">
+                        {{item.makeName}}
+                    </option>
+                </select>
+            </div>
+        </div>
+
+        <div class="row" v-if="loaded">
+            <div class="col-md-2">
+                <label>Model</label>
+                <select class="form-control" v-model="car.modelId" :disabled="!editing">
+                    <option value="0">--</option>
+                    <option v-for="(item, index) in filteredModels" :key="item.modelId" :value="item.modelId">
+                        {{item.modelName}}
+                    </option>
+                </select>
+            </div>
+        </div>
+
+        <div class="row" v-if="loaded">
+            <div class="col-md-2">
+                <label>Price</label>
+                <input class="form-control" v-model="car.price" type="text" :disabled="!editing">
+            </div>
+        </div>
+
+        <div class="row" v-if="loaded">
+            <div class="col-md-6">
+                <label>Notes</label>
+                <textarea class="form-control" v-model="car.notes" :disabled="!editing" />
+            </div>
+        </div>
+
+        <div class="row" v-if="loaded && !editing">
+            <div class="col-md-12">
+                <button class="btn btn-sm btn-info" type="button" v-on:click.stop="toggleEditing">Edit</button>
+            </div>
+        </div>
+
+        <div class="row" v-if="loaded && editing">
+            <div class="col-md-12">
+                <button class="btn btn-sm btn-default" type="button" v-on:click.stop="toggleEditing">Cancel</button>&nbsp;
+                <button class="btn btn-sm btn-primary" type="button" v-on:click.stop="handleSave">Save</button>
+            </div>
+        </div>
+
+    </div>
+</template>
+
+<script src="./caredit.ts"></script>

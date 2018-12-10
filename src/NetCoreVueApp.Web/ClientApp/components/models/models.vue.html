@@ -1,0 +1,27 @@
+<template>
+    <div>
+        <h1>Models</h1>
+        <table class='table table-condensed'>
+            <thead>
+                <tr>
+                    <th></th>
+                    <th>Make</th>
+                    <th>Model</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr v-for="(row, index) in models" :key="row.modelId">
+                    <td>
+                        <router-link class="btn btn-xs btn-info" :to="'/modeledit/' + row.modelId">
+                            View
+                        </router-link>
+                    </td>
+                    <td>{{row.makeName}}</td>
+                    <td>{{row.modelName}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</template>
+
+<script src="./models.ts"></script>

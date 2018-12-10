@@ -1,0 +1,31 @@
+<template>
+    <div>
+        <h1>Cars</h1>
+        <table class='table table-condensed'>
+            <thead>
+                <tr>
+                    <th></th>
+                    <th>Year</th>
+                    <th>Make</th>
+                    <th>Model</th>
+                    <th>Price</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr v-for="(row, index) in cars" :key="row.carId">
+                    <td>
+                        <router-link class="btn btn-xs btn-info" :to="'/caredit/' + row.carId">
+                            View
+                        </router-link>
+                    </td>
+                    <td>{{row.year}}</td>
+                    <td>{{row.makeName}}</td>
+                    <td>{{row.modelName}}</td>
+                    <td>{{row.price}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</template>
+
+<script src="./cars.ts"></script>
