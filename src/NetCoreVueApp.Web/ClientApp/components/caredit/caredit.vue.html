@@ -50,18 +50,7 @@
             </div>
         </div>
 
-        <div class="row" v-if="loaded && !editing">
-            <div class="col-md-12">
-                <button class="btn btn-sm btn-info" type="button" v-on:click.stop="toggleEditing">Edit</button>
-            </div>
-        </div>
-
-        <div class="row" v-if="loaded && editing">
-            <div class="col-md-12">
-                <button class="btn btn-sm btn-default" type="button" v-on:click.stop="toggleEditing">Cancel</button>&nbsp;
-                <button class="btn btn-sm btn-primary" type="button" v-on:click.stop="handleSave">Save</button>
-            </div>
-        </div>
+        <edit-buttons-component isNewCancelRedirect="cars" :isNew="isNew" :isEditing="editing" v-on:toggleEditing="toggleEditing" v-on:handleSave="handleSave"></edit-buttons-component>
 
     </div>
 </template>

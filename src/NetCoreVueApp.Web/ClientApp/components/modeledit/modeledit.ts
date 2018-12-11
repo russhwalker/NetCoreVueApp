@@ -4,7 +4,11 @@ import { ModelViewModel } from '../../interfaces/modelViewModel';
 import { Model } from '../../interfaces/model';
 import { Make } from '../../interfaces/make';
 
-@Component
+@Component({
+    components: {
+        EditButtonsComponent: require('../editbuttons/editbuttons.vue.html')
+    }
+})
 export default class ModelEditComponent extends Vue {
     loaded: boolean = false;
     editing: boolean = false;

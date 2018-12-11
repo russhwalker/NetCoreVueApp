@@ -2,7 +2,11 @@ import Vue from 'vue';
 import { Component } from 'vue-property-decorator';
 import { Make } from '../../interfaces/make';
 
-@Component
+@Component({
+    components: {
+        EditButtonsComponent: require('../editbuttons/editbuttons.vue.html')
+    }
+})
 export default class MakeEditComponent extends Vue {
     loaded: boolean = false;
     editing: boolean = false;

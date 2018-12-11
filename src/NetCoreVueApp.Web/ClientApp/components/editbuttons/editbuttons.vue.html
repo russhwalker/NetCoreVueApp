@@ -1,0 +1,25 @@
+<template>
+    <div class="row">
+
+        <div class="col-md-12" v-if="isNew">
+            <router-link class="btn btn-sm btn-default" to={isNewCancelRedirect}>
+                Cancel
+            </router-link>
+            &nbsp;&nbsp;
+            <button class="btn btn-sm btn-primary" type="button" v-on:click.stop="$emit('handleSave')">Save</button>
+        </div>
+
+        <div class="col-md-12" v-if="!isNew && isEditing">
+            <button class="btn btn-sm btn-default" type="button" v-on:click.stop="$emit('toggleEditing')">Cancel</button>
+            &nbsp;&nbsp;
+            <button class="btn btn-sm btn-primary" type="button" v-on:click.stop="$emit('handleSave')">Save</button>
+        </div>
+
+        <div class="col-md-12" v-if="!isNew && !isEditing">
+            <button class="btn btn-sm btn-info" type="button" v-on:click.stop="$emit('toggleEditing')">Edit</button>
+        </div>
+
+    </div>
+</template>
+
+<script src="./editbuttons.ts"></script>

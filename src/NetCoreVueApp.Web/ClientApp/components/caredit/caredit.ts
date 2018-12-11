@@ -5,7 +5,11 @@ import { Model } from '../../interfaces/model';
 import { Make } from '../../interfaces/make';
 import { Car } from '../../interfaces/car';
 
-@Component
+@Component({
+    components: {
+        EditButtonsComponent: require('../editbuttons/editbuttons.vue.html')
+    }
+})
 export default class CarEditComponent extends Vue {
     loaded: boolean = false;
     editing: boolean = false;

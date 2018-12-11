@@ -24,7 +24,7 @@ namespace NetCoreVueApp.Web.Controllers
         [HttpGet("[action]/{makeId}")]
         public Make MakeEdit(int makeId)
         {
-            return makeRepository.Get(makeId);
+            return makeId == 0 ? new Make() : makeRepository.Get(makeId);
         }
 
         [HttpPost("[action]")]
